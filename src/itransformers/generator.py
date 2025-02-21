@@ -15,7 +15,7 @@ class Generator(nn.Module):
     def __init__(self, d_model, vocab):
         super(Generator, self).__init__()
         """
-            这一层是输出层，所以输出的shape是 feature_size * vocab_size, 最后通过log_softmax对vocab这个维度进行归一化，找到概率最大的词汇
+            这一层是输出层，所以输出的shape是 sequence_size * vocab_size, 最后通过log_softmax对vocab这个维度进行归一化，找到概率最大的词汇
             Examples:
             >>> m = nn.Linear(20, 30)
             >>> input = torch.randn(128, 20)
@@ -26,6 +26,7 @@ class Generator(nn.Module):
         self.proj = nn.Linear(d_model, vocab)
 
     def forward(self, x):
+        # 将输入 x 传入线性层，然后对输出应用 log-softmax 激活函数（在最后一个维度上）
         """
         这个函数首先计算softmax，然后将结果取自然对数（logarithm）。这样做的好处是可以增加数值稳定性，特别是在处理非常小的概率值时。
         log_softmax函数中的参数dim=-1指定了在哪个维度上进行softmax操作。在Python中，负数索引表示从数组的末尾开始计数，因此dim=-1指的是最后一个维度。
