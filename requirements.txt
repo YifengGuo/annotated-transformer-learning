@@ -1,9 +1,9 @@
 --find-links https://download.pytorch.org/whl/torch_stable.html
 
 pandas==1.3.5
-torch==2.6.0
-torchdata==0.10.1
-torchtext==0.18.0
+torch==1.11.0
+torchdata==0.3.0
+torchtext==0.12
 spacy==3.2
 altair==4.1
 jupytext==1.13
@@ -11,5 +11,6 @@ flake8
 black
 GPUtil
 wandb
-transformers==4.49.0
-numpy==2.2.3
+numpy==1.26.4
+matplotlib
+seaborn
